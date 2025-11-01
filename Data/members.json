@@ -1,0 +1,51 @@
+[
+  {
+    "FirstName": "Alice",
+    "LastName": "Johnson",
+    "Expired": true,
+    "MembershipDate": "2021-06-30T00:00:00",
+    "BooksCheckedOut": [],
+    "FullName": "Alice Johnson"
+  },
+  {
+    "FirstName": "Bob",
+    "LastName": "Smith",
+    "Expired": false,
+    "MembershipDate": "2023-03-22T00:00:00",
+    "BooksCheckedOut": [],
+    "FullName": "Bob Smith"
+  },
+  {
+    "FirstName": "Carol",
+    "LastName": "Davis",
+    "Expired": true,
+    "MembershipDate": "2020-11-10T00:00:00",
+    "BooksCheckedOut": [],
+    "FullName": "Carol Davis"
+  },
+  {
+    "FirstName": "Dave",
+    "LastName": "Martinez",
+    "Expired": false,
+    "MembershipDate": "2022-08-05T00:00:00",
+    "BooksCheckedOut": [],
+    "FullName": "Dave Martinez"
+  },
+  {
+    "FirstName": "Eve",
+    "LastName": "Martinez",
+    "Expired": false,
+    "MembershipDate": "2022-08-05T00:00:00",
+    "BooksCheckedOut": [],
+    "FullName": "Eve Martinez"
+  },
+  {
+    "FirstName": "Joe",
+    "LastName": "Martinez",
+    "Expired": false,
+    "MembershipDate": "2022-08-05T00:00:00",
+    "BooksCheckedOut": [],
+    "FullName": "Joe Martinez"
+  }
+]
+

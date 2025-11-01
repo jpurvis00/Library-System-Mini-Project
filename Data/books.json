@@ -1,0 +1,59 @@
+[
+  {
+    "Title": "The Lord of the Rings",
+    "Author": "J.R.R. Tolkien",
+    "ISBN": "1234-5678-9101",
+    "CheckedOut": false,
+    "CheckoutDate": "2025-10-30T00:00:00-04:00",
+    "DueDate": "2025-11-13T00:00:00-05:00"
+  },
+  {
+    "Title": "The Hobbit",
+    "Author": "J.R.R. Tolkien",
+    "ISBN": "2345-6789-1011",
+    "CheckedOut": false,
+    "CheckoutDate": "2025-10-30T00:00:00-04:00",
+    "DueDate": "2025-11-13T00:00:00-05:00"
+  },
+  {
+    "Title": "Learning JavaScript",
+    "Author": "John Doe",
+    "ISBN": "3456-7890-1121",
+    "CheckedOut": false,
+    "CheckoutDate": null,
+    "DueDate": null
+  },
+  {
+    "Title": "Eloquent JavaScript",
+    "Author": "Marijn Haverbeke",
+    "ISBN": "4567-8901-1232",
+    "CheckedOut": false,
+    "CheckoutDate": null,
+    "DueDate": null
+  },
+  {
+    "Title": "You Don\u0027t Know JS",
+    "Author": "Kyle Simpson",
+    "ISBN": "5678-9012-1343",
+    "CheckedOut": false,
+    "CheckoutDate": null,
+    "DueDate": null
+  },
+  {
+    "Title": "JavaScript: The Good Parts",
+    "Author": "Douglas Crockford",
+    "ISBN": "6789-0123-1454",
+    "CheckedOut": false,
+    "CheckoutDate": null,
+    "DueDate": null
+  },
+  {
+    "Title": "JavaScript Patterns",
+    "Author": "Stoyan Stefanov",
+    "ISBN": "7890-1234-1565",
+    "CheckedOut": false,
+    "CheckoutDate": null,
+    "DueDate": null
+  }
+]
+
