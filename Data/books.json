@@ -3,17 +3,17 @@
     "Title": "The Lord of the Rings",
     "Author": "J.R.R. Tolkien",
     "ISBN": "1234-5678-9101",
-    "CheckedOut": false,
-    "CheckoutDate": "2025-10-30T00:00:00-04:00",
-    "DueDate": "2025-11-13T00:00:00-05:00"
+    "CheckedOut": true,
+    "CheckoutDate": "2025-11-01T00:00:00-04:00",
+    "DueDate": "2025-11-15T00:00:00-05:00"
   },
   {
     "Title": "The Hobbit",
     "Author": "J.R.R. Tolkien",
     "ISBN": "2345-6789-1011",
     "CheckedOut": false,
-    "CheckoutDate": "2025-10-30T00:00:00-04:00",
-    "DueDate": "2025-11-13T00:00:00-05:00"
+    "CheckoutDate": null,
+    "DueDate": null
   },
   {
     "Title": "Learning JavaScript",
@@ -56,4 +56,3 @@
     "DueDate": null
   }
 ]
-

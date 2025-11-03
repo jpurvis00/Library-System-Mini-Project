@@ -56,7 +56,8 @@ public class LibraryApp
                     BorrowBook(selectedMember, members, books);
                     break;
                 case 2:
-                    // ReturnBook(members, books);
+                    selectedMember = DisplayAndSelectMember(members);
+                    ReturnBook(selectedMember, members, books);
                     break;
                 case 3:
                     // UpdateMemberStatus(member);
@@ -73,6 +74,20 @@ public class LibraryApp
         members.DumpConsole();
         // string json = JsonSerializer.Serialize(members, new JsonSerializerOptions { WriteIndented = true });
         // File.WriteAllText("Data/members.json", json);
+    }
+
+    private void ReturnBook(int selectedMember, List<Member>? members, List<Book>? books)
+    {
+        if (selectedMember == -1 || books == null || members == null)
+        {
+            _menuService.ErrorMsgDisplay("There is an error.");
+            return;
+        }
+
+        var checkedOutBooks = _memberServices.ShowMemberBooks(members[selectedMember]);
+        _menuService.MenuDisplayCheckedOutBooks("\n==== Return Book ====", checkedOutBooks);
+
+        // checkedOutBooks.DumpConsole();
     }
 
     private int DisplayAndSelectMember(List<Member>? members)
@@ -95,8 +110,6 @@ public class LibraryApp
             return;
         }
 
-        members[selectedMember].DumpConsole();
-
         // Check to see if the members membership is expired. Offer the chance to renew if it is.
         if (members[selectedMember].Expired)
         {
@@ -104,7 +117,7 @@ public class LibraryApp
 
             if (renew)
             {
-                members[selectedMember].Expired = false;
+                _memberServices.ChangeMembershipStatus(members[selectedMember], false);
                 _dataServices.SaveMember(members);
             }
             else
@@ -121,12 +134,13 @@ public class LibraryApp
         var availableBooks = _libraryServices.GetAvailableBooks(books);
         var bookChoice = _menuService.ShowAndSelectAvailableBooks(availableBooks);
 
-        availableBooks[bookChoice].CheckedOut = true;
-        availableBooks[bookChoice].CheckoutDate = DateTime.Today;
-        availableBooks[bookChoice].DueDate = DateTime.Today.AddDays(14);
+        _libraryServices.CheckOutBook(members[selectedMember], availableBooks[bookChoice]);
+        _memberServices.CheckOutBook(members[selectedMember], availableBooks[bookChoice]);
 
         _dataServices.SaveBooks(books);
+        _dataServices.SaveMember(members);
 
+        members[selectedMember].DumpConsole();
         // availableBooks[bookChoice].DumpConsole();
         //implement adding book to the members books list.
         //Should I implement a member history as well?

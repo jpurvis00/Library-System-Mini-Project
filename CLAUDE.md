@@ -4,9 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a .NET 8.0 console application for managing a basic library system. The project uses:
+This is a .NET 8.0 console application for managing a library system. The project uses:
 - **Dumpify** (v0.6.6) for console output formatting
-- **Microsoft.Extensions.DependencyInjection** (v9.0.10) for dependency injection support
+- **Microsoft.Extensions.DependencyInjection** (v9.0.10) for dependency injection
+- **JSON file storage** for persisting books and members data
 
 ## Build and Run Commands
 
@@ -26,22 +27,40 @@ dotnet clean
 
 ## Architecture
 
-The codebase follows a simple layered architecture:
+The application follows a layered architecture with dependency injection:
+
+### Entry Point (`Program.cs`)
+- Configures dependency injection container
+- Registers all services as singletons (ILibraryServices, IMemberServices, IDataServices, IMenuService)
+- Bootstraps and runs the `LibraryApp`
+
+### Main Application (`LibraryApp.cs`)
+- Menu-driven console interface with operations: Borrow book, Return book, Update membership status
+- Orchestrates interactions between data, library, member, and menu services
+- Currently only "Borrow book" functionality is fully implemented
 
 ### Models Layer (`Models/`)
-- **Book**: Represents a library book with title, author, ISBN, and checkout status/dates
-- **Member**: Represents a library member with name, membership details, and checked-out books
-- **Library**: Represents the library itself with a collection of books (initialized with sample data)
+- **Book**: Library book with title, author, ISBN, checkout status, checkout date, and due date
+- **Member**: Library member with first/last name, membership expiration status, and checked-out books
+- **Library**: Legacy model (may not be actively used in current architecture)
 
 ### Services Layer (`Services/`)
-- **LibraryServices**: Contains business logic for querying books (e.g., filtering checked-out books, retrieving all books)
+All services implement corresponding interfaces from `Interfaces/`:
 
-### Entry Point
-- **Program.cs**: Main console application that demonstrates library operations using Dumpify for formatted console output
+- **JsonDataServices** (`IDataServices`): Loads and saves books/members from JSON files in `Data/` directory
+- **LibraryServices** (`ILibraryServices`): Book filtering logic (checked-out vs available books), member filtering by membership status
+- **MemberServices** (`IMemberServices`): Member search, selection, and membership management operations
+- **MenuService** (`IMenuService`): Console UI logic for displaying menus, selecting members/books, and showing success/error messages
+
+### Data Storage
+- Book and member data persisted in `Data/books.json` and `Data/members.json`
+- JSON serialization/deserialization handled by `JsonDataServices`
 
 ## Key Design Patterns
 
-The Library class initializes with hardcoded sample book data in its constructor. Services operate on collections passed as parameters rather than maintaining state. The Member class includes display logic (DisplayCheckoutBooks method) for formatted output of checked-out books.
+- **Dependency Injection**: All services are interface-based and injected via constructor
+- **Single Responsibility**: Services are separated by concern (data, business logic, UI, member operations)
+- **Stateless Services**: Services operate on data passed as parameters rather than maintaining internal state
 
 ## Namespace
 

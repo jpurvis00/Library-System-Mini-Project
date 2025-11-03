@@ -13,6 +13,24 @@ public class MenuService : IMenuService
         // _libraryServices = libraryServices;
     }
 
+    public int MenuDisplayCheckedOutBooks(string appTitle, List<Book> options)
+    {
+        Console.WriteLine(appTitle);
+        for (int i = 0; i < options.Count(); i++)
+        {
+            Console.WriteLine($"    {i + 1}: {options[i].Title}");
+        }
+
+        Console.Write("Please choose a book to return: ");
+
+        if (int.TryParse(Console.ReadLine(), out int choice))
+        {
+            return choice;
+        }
+
+        return -1;
+    }
+
     public int MenuDisplayAndGetChoice(string appTitle, string[] options)
     {
         Console.WriteLine(appTitle);

@@ -8,4 +8,5 @@ public interface IMenuService
     public int ShowAndSelectMember(List<Member> members);
     public bool RenewMembership(Member member);
     public int ShowAndSelectAvailableBooks(List<Book> availableBooks);
+    public int MenuDisplayCheckedOutBooks(string appTitle, List<Book> options);
 }

@@ -22,7 +22,11 @@ public class LibraryServices : ILibraryServices
         return members.Where(m => m.Expired == expired).ToList();
     }
 
-    public void BorrowBook(Member member, Book book) { }
+    public void CheckOutBook(Member member, Book book) {
+        book.CheckedOut = true;
+        book.CheckoutDate = DateTime.Today;
+        book.DueDate = DateTime.Today.AddDays(14);
+    }
 
     public void ReturnBook(Member member, Book book) { }
 }

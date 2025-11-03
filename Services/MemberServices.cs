@@ -2,6 +2,13 @@
 
 public class MemberServices : IMemberServices
 {
+    private readonly IMenuService _menuService;
+
+    public MemberServices(IMenuService menuService)
+    {
+        _menuService = menuService;
+    }
+
     public List<Member> SearchMembers(List<Member> members, string lastName)
     {
         if (!lastName.Equals(""))
@@ -36,6 +43,17 @@ public class MemberServices : IMemberServices
         }
     }
 
+    public List<Book>? ShowMemberBooks(Member member)
+    {
+        if (member == null)
+        {
+            _menuService.ErrorMsgDisplay("No member has been selected.");
+            return null;
+        }
+
+        return member.BooksCheckedOut;
+    }
+
     public void ChangeMembershipStatus(Member member, bool expired)
     {
         member.Expired = expired;
@@ -43,6 +61,6 @@ public class MemberServices : IMemberServices
 
     public void CheckOutBook(Member member, Book book)
     {
-        Console.WriteLine("member check out book");
+        member.BooksCheckedOut.Add(book);
     }
 }

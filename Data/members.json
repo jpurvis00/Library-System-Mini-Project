@@ -2,9 +2,18 @@
   {
     "FirstName": "Alice",
     "LastName": "Johnson",
-    "Expired": true,
+    "Expired": false,
     "MembershipDate": "2021-06-30T00:00:00",
-    "BooksCheckedOut": [],
+    "BooksCheckedOut": [
+      {
+        "Title": "The Lord of the Rings",
+        "Author": "J.R.R. Tolkien",
+        "ISBN": "1234-5678-9101",
+        "CheckedOut": true,
+        "CheckoutDate": "2025-11-01T00:00:00-04:00",
+        "DueDate": "2025-11-15T00:00:00-05:00"
+      }
+    ],
     "FullName": "Alice Johnson"
   },
   {
@@ -48,4 +57,3 @@
     "FullName": "Joe Martinez"
   }
 ]
-
